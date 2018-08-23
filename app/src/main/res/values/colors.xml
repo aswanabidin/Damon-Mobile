@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FEC02B</color>
+    <color name="colorPrimaryDark">#FEC02B</color>
+    <color name="colorAccent">#FEC02B</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGray">#AEAEAE</color>
+    <color name="colorWhiteSmoke">#F5F5F5</color>
+
+
+    \* Danamon Color *\
+    <color name="colorOrange">#FEC02B</color>
+
+
+</resources>

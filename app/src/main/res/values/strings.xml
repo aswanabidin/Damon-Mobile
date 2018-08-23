@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Danamon</string>
+    <string name="title_activity_login">Login</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    \* Item Drawer Navigation*\
+    <string name="drawer_navigation_login">LOGIN</string>
+    <string name="drawer_navigation_promo_terdekat">PROMO TERDEKAT</string>
+    <string name="drawer_navigation_atm_cabang">ATM &#38; CABANG</string>
+    <string name="drawer_navigation_ringkasan_produk">RINGKASAN PRODUK</string>
+    <string name="drawer_navigation_produk_perbankan">PRODUK PERBANKAN</string>
+    <string name="drawer_navigation_syarat_ketentuan">SYARAT &#38; KETENTUAN</string>
+    <string name="drawer_navigation_pesan">PESAN</string>
+    <string name="drawer_navigation_tentang_kami">PRODUK PERBANKAN</string>
+    <string name="drawer_navigation_hubungi_kami_1">HUBUNGI KAMI</string>
+    <string name="drawer_navigation_hubungi_kami_2">Hello Danamon 1-500-090</string>
+
+    \*Login Page*\
+    <string name="login_page_btn_login">Log In</string>
+    <string name="login_page_btn_register">Daftar Sekarang</string>
+    <string name="login_page_nasabah_danamon">Saya adalah Nasabah Danamon</string>
+    <string name="login_page_aktivasi_sekarang"><u>Aktivasi Sekarang</u></string>
+
+</resources>

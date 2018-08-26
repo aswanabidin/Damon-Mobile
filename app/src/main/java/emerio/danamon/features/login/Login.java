@@ -1,5 +1,7 @@
 package emerio.danamon.features.login;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,13 +20,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import emerio.danamon.R;
-import emerio.danamon.features.splash.SplashScreen;
+import emerio.danamon.features.login.example.MySingleton;
+import emerio.danamon.features.login.example.SessionHandler;
 
 public class Login extends AppCompatActivity {
 
     private ImageButton btnViewDrawerNavigation;
+    private ProgressDialog progressDialog;
+    private Context context;
+
+    private String username;
+    private String password;
 
     // Email and Password Variable
     private TextInputLayout inputLayoutEmail, inputLayoutPassword;
@@ -33,17 +50,31 @@ public class Login extends AppCompatActivity {
     // Button Login
     private Button btnLogin;
 
+    //SessionHandler
+    private SessionHandler session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        session = new SessionHandler(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            loadDashboard();
+        }
+
         setContentView(R.layout.activity_login);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         final LinearLayout content = (LinearLayout) findViewById(R.id.content);
 
-        // Email and Password Inizialitation and new object
+        // Progress Dialog Initializing
+        progressDialog = new ProgressDialog(this);
+
+        // Email and Password Initializing and new object
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_login_email);
         inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_login_password);
 
@@ -52,16 +83,16 @@ public class Login extends AppCompatActivity {
 
         edtEmail.addTextChangedListener(new Login.MyTextWatcher(edtEmail));
 
-        // Button Login Inizialitation
+        // Button Login Initializing
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final String email = edtEmail.getText().toString().trim();
-                final String password = edtPassword.getText().toString();
+                username = edtEmail.getText().toString().toLowerCase().trim();
+                password = edtPassword.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
+                if (TextUtils.isEmpty(username)) {
                     submitForm();
                     return;
                 }
@@ -70,6 +101,7 @@ public class Login extends AppCompatActivity {
                     submitForm();
                     return;
                 }
+
             }
         });
 
@@ -98,6 +130,15 @@ public class Login extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+    /**
+     * Launch Dashboard Activity on Successful Login
+     */
+    private void loadDashboard() {
+        Intent i = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(i);
+        finish();
+
+    }
 
     /* Validate Email */
 
@@ -172,6 +213,7 @@ public class Login extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.input_layout_login_email:
                     validateEmail();
+                    finish();
                     break;
                 case R.id.input_layout_login_password:
                     validatePassword();

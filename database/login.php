@@ -2,7 +2,7 @@
 define('HOST','localhost');
  define('USER','root');
  define('PASS','');
- define('DB','dbcourse');
+ define('DB','db_danamon');
 
  $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
  if($_SERVER['REQUEST_METHOD']=='POST'){

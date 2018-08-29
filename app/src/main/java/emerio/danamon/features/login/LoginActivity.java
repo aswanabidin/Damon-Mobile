@@ -22,19 +22,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import emerio.danamon.R;
-import emerio.danamon.features.login.example.MySingleton;
-import emerio.danamon.features.login.example.SessionHandler;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private ImageButton btnViewDrawerNavigation;
     private ProgressDialog progressDialog;
@@ -50,18 +43,10 @@ public class Login extends AppCompatActivity {
     // Button Login
     private Button btnLogin;
 
-    //SessionHandler
-    private SessionHandler session;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        session = new SessionHandler(getApplicationContext());
-
-        if(session.isLoggedIn()){
-            loadDashboard();
-        }
 
         setContentView(R.layout.activity_login);
 
@@ -81,7 +66,7 @@ public class Login extends AppCompatActivity {
         edtEmail = (EditText) findViewById(R.id.et_login_email);
         edtPassword = (EditText) findViewById(R.id.et_login_password);
 
-        edtEmail.addTextChangedListener(new Login.MyTextWatcher(edtEmail));
+        edtEmail.addTextChangedListener(new LoginActivity.MyTextWatcher(edtEmail));
 
         // Button Login Initializing
         btnLogin = (Button) findViewById(R.id.btn_login);
